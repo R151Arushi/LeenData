@@ -1,0 +1,41 @@
+{
+    "Users": [
+        {
+            "businessPhones": [],
+            "displayName": "Conf Room Adams",
+            "givenName": null,
+            "jobTitle": null,
+            "mail": "Adams@contoso.com",
+            "mobilePhone": null,
+            "officeLocation": null,
+            "preferredLanguage": null,
+            "surname": null,
+            "userPrincipalName": "Adams@contoso.com",
+            "id": "6ea91a8d-e32e-41a1-b7bd-d2d185eed0e0"
+        }
+    ],
+    "factor": {
+        "id": "6ea91a8d-e32e-41a1-b7bd-d2d185eed0e0",
+        "userPrincipalName": "Adams@contoso.com",
+        "userDisplayName": "Adams",
+        "isAdmin": false,
+        "isSprRegistered": false,
+        "isSprEnabled": false,
+        "isSprCapable": false,
+        "isMfaRegistered": true,
+        "isMfaCapable": true,
+        "isPasswordlessCapable": false,
+        "lastUpdatedDateTime": "2023-03-13T19:15:41.6195833Z",
+        "methodsRegistered": [
+            "microsoftAuthenticatorPush",
+            "softwareOneTimePasscode"
+        ],
+        "defaultMfaMethod": "microsoftAuthenticatorPush",
+        "isSystemPreferredAuthenticationMethodEnabled": true,
+        "systemPreferredAuthenticationMethods": [
+            "push"
+        ],
+        "userPreferredMethodForSecondaryAuthentication": "push",
+        "userType": "member"
+    }
+}

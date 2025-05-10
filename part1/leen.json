@@ -1,0 +1,30 @@
+{
+    "count": 123,
+    "total": 123,
+    "items": [
+      {
+        "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+        "domain": "<string>",
+        "email_addr": "<string>",
+        "full_name": "<string>",
+        "name": "<string>",
+        "vendor_id": "<string>",
+        "vendor_status": "<string>",
+        "vendor_created_at": "2023-11-07T05:31:56Z",
+        "activated_at": "2023-11-07T05:31:56Z",
+        "last_status_changed_at": "2023-11-07T05:31:56Z",
+        "last_login_at": "2023-11-07T05:31:56Z",
+        "last_updated_at": "2023-11-07T05:31:56Z",
+        "password_changed_days": "200",
+        "is_mfa_enrolled": true,
+        "mfa_type": "call/email/push/question/signed_nonce/sms/token/token:hardware/token:hotp/token:software:totp/u2f/web/webauthn",
+        "mfa_status": "ACTIVE/DISABLED/ENROLLED/EXPIRED/INACTIVE/NOT_SETUP/PENDING_ACTIVATION",
+        "mfa_provider": "CUSTOM/DUO/FIDO/GOOGLE/OKTA/RSA/SYMANTEC/YUBICO",
+        "is_admin": true,
+        "access_level": "APP_ADMIN/APP_USER/ORG_ADMIN/ORG_USER",
+        "assigned_role": "USER/GROUP/CLIENT",
+        "is_deleted": true
+      }
+    ]
+  }
+
