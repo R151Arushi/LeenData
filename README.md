@@ -1,6 +1,6 @@
 # Leen Candidate Exercise: IDP Model Extension
 
-##Part 1: Enhancing the User Object
+## Part 1: Enhancing the User Object
 
 1. API Endpoints:
 ```
