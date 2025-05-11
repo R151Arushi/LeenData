@@ -1,6 +1,10 @@
 import json
 from datetime import datetime
 from collections import defaultdict
+import uuid
+
+def generate_uid(user_id):
+    return str(uuid.uuid4())
 
 def safe_date_diff_days(from_date_str):
     try:
@@ -10,14 +14,13 @@ def safe_date_diff_days(from_date_str):
         return None
 
 # Load the actual JSON file
-with open('okta/okta.json') as f:
+with open('part1/okta/okta.json') as f:
     okta_data = json.load(f)
 
 users = okta_data.get('user', [])
 factors_raw = okta_data.get('factor', [])
 roles_raw = okta_data.get('role', [])
 
-# Group factors and roles by user ID
 user_factors = defaultdict(list)
 user_roles = defaultdict(list)
 
@@ -57,13 +60,13 @@ for user in users:
     password_changed_days = safe_date_diff_days(user.get('passwordChanged'))
 
     item = {
-        "id": uid,
-        "domain": domain,
-        "email_addr": email,
+        "id": generate_uid(uid),
+        "domain": email.split('@')[-1] if email else '',
+        "email_addr": profile.get('email', ''),
         "full_name": f"{profile.get('firstName', '')} {profile.get('lastName', '')}".strip(),
         "name": profile.get('firstName', ''),
-        "vendor_id": uid,
-        "vendor_status": status,
+        "vendor_id": user.get('id'),
+        "vendor_status": user.get('status', ''),
         "vendor_created_at": user.get('created'),
         "activated_at": user.get('activated'),
         "last_status_changed_at": user.get('statusChanged'),
@@ -77,7 +80,6 @@ for user in users:
         "is_admin": is_admin,
         "access_level": access_level,
         "assigned_role": assigned_role,
-        "is_deleted": status == 'DEPROVISIONED'
     }
 
     leen_items.append(item)
@@ -88,5 +90,6 @@ leen_payload = {
     "items": leen_items
 }
 
-with open('okta/leen_users_from_okta.json', 'w') as out:
+with open('part1/okta/okta_leen_data.json', 'w') as out:
     json.dump(leen_payload, out, indent=2)
+
