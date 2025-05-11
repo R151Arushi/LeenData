@@ -1,0 +1,70 @@
+{
+  "count": 4,
+  "total": 4,
+  "items": [
+    {
+      "policyName": "passwordPolicy",
+      "status": "ACTIVE",
+      "priority": 1,
+      "createdAt": "2024-04-25T17:35:02.000Z",
+      "lastUpdated": "2024-04-25T17:35:02.000Z",
+      "details": {
+        "minLength": 8,
+        "complexity": {
+          "requireUppercase": true,
+          "requireLowercase": true,
+          "requireNumber": false,
+          "requireSymbol": false
+        },
+        "expiryDays": 0,
+        "historyCount": 4,
+        "overrides": {}
+      }
+    },
+    {
+      "policyName": "Policy name",
+      "status": "ACTIVE",
+      "priority": 1,
+      "createdAt": "createdDate",
+      "lastUpdated": "lastUpdated",
+      "details": {
+        "enforced": true,
+        "factors": [
+          "one_time_passcode",
+          "push_notification",
+          "password"
+        ]
+      }
+    },
+    {
+      "policyName": "signOnPolicy",
+      "status": "ACTIVE",
+      "priority": 1,
+      "createdAt": "2024-04-25T17:35:02.000Z",
+      "lastUpdated": "2024-04-25T17:35:02.000Z",
+      "details": {
+        "allowedGroups": [
+          "groupId"
+        ],
+        "sessionSettings": {
+          "maxSessionLifetimeMinutes": 120,
+          "usePersistentCookie": false,
+          "requireFactorEverySignIn": true
+        },
+        "accessControl": {
+          "allowedRegions": [],
+          "blockedCountries": []
+        },
+        "overrides": {}
+      }
+    },
+    {
+      "policyName": "Policy name",
+      "status": "ACTIVE",
+      "priority": 1,
+      "createdAt": "2024-04-25T17:35:02.000Z",
+      "lastUpdated": "2024-04-25T17:35:02.000Z",
+      "details": {}
+    }
+  ]
+}

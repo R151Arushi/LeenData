@@ -1,0 +1,171 @@
+{
+  "policies": [
+    {
+      "policyName": "passwordPolicy",
+      "status": "ACTIVE",
+      "priority": 1,
+      "createdAt": "2024-10-01T12:00:00Z",
+      "lastUpdated": "2025-01-10T10:45:00Z",
+      "details": {
+        "minLength": 8,
+        "complexity": {
+          "requireUppercase": true,
+          "requireLowercase": true,
+          "requireNumber": false,
+          "requireSymbol": false
+        },
+        "expiryDays": 0,
+        "historyCount": 4,
+        "overrides": {
+          "admin": {
+            "minLength": 16,
+            "complexity": {
+              "requireUppercase": true,
+              "requireLowercase": true,
+              "requireNumber": true,
+              "requireSymbol": true
+            },
+            "expiryDays": 60,
+            "historyCount": 10
+          },
+          "contractor": {
+            "minLength": 6,
+            "complexity": {
+              "requireUppercase": false,
+              "requireLowercase": true,
+              "requireNumber": true,
+              "requireSymbol": false
+            },
+            "expiryDays": 180,
+            "historyCount": 2
+          }
+        }
+      }
+    },
+    {
+      "policyName": "signOnPolicy",
+      "status": "ACTIVE",
+      "priority": 1,
+      "createdAt": "2024-10-01T12:00:00Z",
+      "lastUpdated": "2025-01-10T10:45:00Z",
+      "details": {
+        "allowedGroups": ["groupId"],
+        "sessionSettings": {
+          "maxSessionLifetimeMinutes": 120,
+          "usePersistentCookie": false,
+          "requireFactorEverySignIn": true
+        },
+        "accessControl": {
+          "allowedRegions": ["US", "CA"],
+          "blockedCountries": ["RU", "CN"]
+        },
+        "overrides": {
+          "admin": {
+            "allowedGroups": ["adminGroupId"],
+            "sessionSettings": {
+              "maxSessionLifetimeMinutes": 60,
+              "requireFactorEverySignIn": true
+            },
+            "accessControl": {
+              "allowedRegions": ["US", "CA", "UK"],
+              "blockedCountries": ["CN"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "policyName": "mfaPolicy",
+      "status": "ACTIVE",
+      "priority": 1,
+      "createdAt": "2024-10-01T12:00:00Z",
+      "lastUpdated": "2025-01-10T10:45:00Z",
+      "details": {
+        "enforced": true,
+        "factors": ["push_notification", "one_time_passcode", "password", "sms", "email"]
+      }
+    },
+    {
+      "policyName": "entityRiskPolicy",
+      "status": "ACTIVE",
+      "priority": 1,
+      "createdAt": "2024-11-15T09:30:00Z",
+      "lastUpdated": "2025-01-20T08:22:00Z",
+      "details": {
+        "riskLevels": {
+          "low": {
+            "actions": [
+              "allowAccess"
+            ],
+            "criteria": {
+              "userRiskLevel": "low",
+              "signInRiskLevel": "low"
+            }
+          },
+          "medium": {
+            "actions": [
+              "requireMFA"
+            ],
+            "criteria": {
+              "userRiskLevel": "medium",
+              "signInRiskLevel": "medium"
+            }
+          },
+          "high": {
+            "actions": [
+              "blockAccess",
+              "requirePasswordChange",
+              "requireMFA"
+            ],
+            "criteria": {
+              "userRiskLevel": "high",
+              "signInRiskLevel": "high"
+            }
+          }
+        },
+        "conditions": {
+          "userRiskLevels": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "signInRiskLevels": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "clientAppTypes": [
+            "all"
+          ],
+          "platforms": null,
+          "locations": null,
+          "devices": null
+        },
+        "actions": {
+          "grantControls": {
+            "operator": "AND",
+            "builtInControls": [
+              "passwordChange",
+              "multiFactorAuthentication"
+            ],
+            "customAuthenticationFactors": [],
+            "authenticationStrength": {
+              "id": "00000000-0000-0000-0000-000000000002",
+              "displayName": "Multifactor authentication",
+              "description": "Combinations of methods that satisfy strong authentication, such as a password + SMS",
+              "requirementsSatisfied": "mfa"
+            }
+          },
+          "sessionControls": {
+            "signInFrequency": {
+              "value": null,
+              "type": "primaryAndSecondaryAuthentication",
+              "frequencyInterval": "everyTime",
+              "isEnabled": true
+            }
+          }
+        }
+      }
+    }
+  ]
+}

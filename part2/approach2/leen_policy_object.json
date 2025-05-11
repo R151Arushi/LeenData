@@ -1,0 +1,20 @@
+{
+  "policies": [
+    { 
+      "type": "policyType",
+      "policyName": "policy1",
+      "description": "policyDescription",
+      "id": "policyId",
+      "status": "ACTIVE",
+      "priority": 1,
+      "createdAt": "2024-10-01T12:00:00Z",
+      "lastUpdated": "2025-01-10T10:45:00Z",
+      "details": {
+        "overrides": {
+          "users": {}
+        }
+      }
+    }
+  ]
+}
+

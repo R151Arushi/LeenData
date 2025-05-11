@@ -1,0 +1,374 @@
+[
+  {
+    "type": "PASSWORD",
+    "id": "policyId",
+    "status": "ACTIVE",
+    "name": "Policy name",
+    "description": "Policy description",
+    "priority": 1,
+    "system": true,
+    "created": "2024-04-25T17:35:02.000Z",
+    "lastUpdated": "2024-04-25T17:35:02.000Z",
+    "conditions": {
+      "people": {
+        "groups": {
+          "include": [
+            "groupId"
+          ]
+        }
+      },
+      "authProvider": {
+        "provider": "okta"
+      }
+    },
+    "settings": {
+      "password": {
+        "complexity": {
+          "minLength": 8,
+          "minLowerCase": 1,
+          "minUpperCase": 1,
+          "minNumber": null,
+          "minSymbol": 0,
+          "excludeUsername": true,
+          "dictionary": {
+            "common": {
+              "exclude": false
+            }
+          },
+          "excludeAttributes": []
+        },
+        "age": {
+          "maxAgeDays": 0,
+          "expireWarnDays": 0,
+          "minAgeMinutes": 0,
+          "historyCount": 4
+        },
+        "lockout": {
+          "maxAttempts": 0,
+          "autoUnlockMinutes": 0,
+          "userLockoutNotificationChannels": [],
+          "showLockoutFailures": false
+        }
+      },
+      "recovery": {
+        "factors": {
+          "recovery_question": {
+            "status": "ACTIVE",
+            "properties": {
+              "complexity": {
+                "complexity": 4
+              }
+            }
+          },
+          "okta_email": {
+            "status": "ACTIVE",
+            "properties": {
+              "recoveryToken": {
+                "tokenLifetimeMinutes": 10080
+              }
+            }
+          },
+          "okta_sms": {
+            "status": "INACTIVE"
+          },
+          "okta_call": {
+            "status": "INACTIVE"
+          }
+        }
+      },
+      "delegation": {
+        "options": {
+          "skipUnlock": false
+        }
+      }
+    },
+    "_links": {
+      "self": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}",
+        "hints": {
+          "allow": [
+            "GET",
+            "PUT"
+          ]
+        }
+      },
+      "rules": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}/rules",
+        "hints": {
+          "allow": [
+            "POST",
+            "GET"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "type": "MFA_ENROLL",
+    "id": "policyId",
+    "status": "ACTIVE",
+    "name": "Policy name",
+    "description": "Policy description",
+    "priority": 1,
+    "system": true,
+    "created": "createdDate",
+    "lastUpdated": "lastUpdated",
+    "conditions": {
+      "people": {
+        "groups": {
+          "include": [
+            "groupId"
+          ]
+        }
+      }
+    },
+    "settings": {
+      "factors": {
+        "okta_otp": {
+          "enroll": {
+            "self": "OPTIONAL"
+          },
+          "consent": {
+            "type": "NONE"
+          }
+        },
+        "okta_push": {
+          "enroll": {
+            "self": "OPTIONAL"
+          },
+          "consent": {
+            "type": "NONE"
+          }
+        },
+        "okta_password": {
+          "enroll": {
+            "self": "OPTIONAL"
+          },
+          "consent": {
+            "type": "NONE"
+          }
+        }
+      }
+    },
+    "_links": {
+      "self": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}",
+        "hints": {
+          "allow": [
+            "GET",
+            "PUT"
+          ]
+        }
+      },
+      "rules": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}/rules",
+        "hints": {
+          "allow": [
+            "POST",
+            "GET"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "type": "IDP_DISCOVERY",
+    "id": "policyId",
+    "status": "ACTIVE",
+    "name": "Policy name",
+    "description": "Policy description",
+    "priority": 1,
+    "system": true,
+    "created": "createdDate",
+    "lastUpdated": "lastUpdated",
+    "conditions": null,
+    "_links": {
+      "self": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}",
+        "hints": {
+          "allow": [
+            "GET",
+            "PUT"
+          ]
+        }
+      },
+      "rules": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}/rules",
+        "hints": {
+          "allow": [
+            "POST",
+            "GET"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "type": "PROFILE_ENROLLMENT",
+    "id": "policyId",
+    "status": "ACTIVE",
+    "name": "Policy name",
+    "description": "Policy description",
+    "priority": 1,
+    "system": true,
+    "created": "createdDate",
+    "lastUpdated": "lastUpdated",
+    "conditions": null,
+    "_links": {
+      "self": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}",
+        "hints": {
+          "allow": [
+            "GET",
+            "PUT"
+          ]
+        }
+      },
+      "rules": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}/rules",
+        "hints": {
+          "allow": [
+            "POST",
+            "GET"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "type": "ACCESS_POLICY",
+    "id": "policyId",
+    "status": "ACTIVE",
+    "name": "Policy name",
+    "description": "Policy description",
+    "priority": 1,
+    "system": true,
+    "conditions": null,
+    "created": "2024-04-25T17:35:02.000Z",
+    "lastUpdated": "2024-04-25T17:35:02.000Z",
+    "_links": {
+      "self": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}",
+        "hints": {
+          "allow": [
+            "GET",
+            "PUT"
+          ]
+        }
+      },
+      "rules": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}/rules",
+        "hints": {
+          "allow": [
+            "GET",
+            "POST"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "type": "OKTA_SIGN_ON",
+    "id": "policyId",
+    "status": "ACTIVE",
+    "name": "Policy name",
+    "description": "Policy description",
+    "priority": 1,
+    "system": true,
+    "conditions": {
+      "people": {
+        "groups": {
+          "include": [
+            "groupId"
+          ]
+        }
+      }
+    },
+    "created": "2024-04-25T17:35:02.000Z",
+    "lastUpdated": "2024-04-25T17:35:02.000Z",
+    "_links": {
+      "self": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}",
+        "hints": {
+          "allow": [
+            "GET",
+            "PUT"
+          ]
+        }
+      },
+      "rules": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}/rules",
+        "hints": {
+          "allow": [
+            "GET",
+            "POST"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "type": "ENTITY_RISK",
+    "id": "policyId",
+    "status": "ACTIVE",
+    "name": "Policy name",
+    "description": "Policy description",
+    "priority": 1,
+    "system": true,
+    "conditions": null,
+    "created": "2024-04-25T17:35:02.000Z",
+    "lastUpdated": "2024-04-25T17:35:02.000Z",
+    "_links": {
+      "self": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}",
+        "hints": {
+          "allow": [
+            "GET",
+            "PUT"
+          ]
+        }
+      },
+      "rules": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}/rules",
+        "hints": {
+          "allow": [
+            "GET",
+            "POST"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "type": "POST_AUTH_SESSION",
+    "id": "policyId",
+    "status": "ACTIVE",
+    "name": "Policy name",
+    "description": "Policy description",
+    "priority": 1,
+    "system": true,
+    "conditions": null,
+    "created": "2024-04-25T17:35:02.000Z",
+    "lastUpdated": "2024-04-25T17:35:02.000Z",
+    "_links": {
+      "self": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}",
+        "hints": {
+          "allow": [
+            "GET",
+            "PUT"
+          ]
+        }
+      },
+      "rules": {
+        "href": "https://{yourOktaDomain}/api/v1/policies/{policyId}/rules",
+        "hints": {
+          "allow": [
+            "GET",
+            "POST"
+          ]
+        }
+      }
+    }
+  }
+]
