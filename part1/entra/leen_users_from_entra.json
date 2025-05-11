@@ -3,26 +3,28 @@
   "total": 1,
   "items": [
     {
-      "id": "6ea91a8d-e32e-41a1-b7bd-d2d185eed0e0",
+      "id": "7d093c11-96db-4ea1-899a-97710a23701c",
       "domain": "contoso.com",
       "email_addr": "Adams@contoso.com",
       "full_name": "Conf Room Adams",
-      "name": "Conf",
+      "name": "Conf Room Adams",
       "vendor_id": "6ea91a8d-e32e-41a1-b7bd-d2d185eed0e0",
-      "vendor_status": "ACTIVE",
+      "vendor_status": true,
       "vendor_created_at": null,
       "activated_at": null,
       "last_status_changed_at": null,
       "last_login_at": null,
-      "last_updated_at": "2023-03-13T19:15:41.6195833Z",
+      "last_updated_at": null,
       "password_changed_days": null,
-      "is_mfa_enrolled": true,
-      "mfa_type": "microsoftAuthenticatorPush",
+      "mfa_type": [
+        "microsoftAuthenticatorPush",
+        "softwareOneTimePasscode"
+      ],
       "mfa_status": "ACTIVE",
-      "mfa_provider": "MICROSOFT",
+      "mfa_provider": "MS Entra",
       "is_admin": false,
-      "access_level": "ORG_USER",
-      "assigned_role": "USER",
+      "access_level": "",
+      "assigned_role": "member",
       "is_deleted": false
     }
   ]
