@@ -1,5 +1,8 @@
 import json
 from datetime import datetime
+import uuid
+def generate_uid(user_id):
+    return str(uuid.uuid4())
 
 def safe_date_diff_days(from_date_str):
     try:
@@ -9,50 +12,36 @@ def safe_date_diff_days(from_date_str):
         return None
 
 # Load Microsoft Entra (Azure AD) export
-with open('entra/ms_entra.json') as f:
+with open('part1/entra/ms_entra.json') as f:
     entra_data = json.load(f)
 
 users = entra_data.get('Users', [])
 factor = entra_data.get('factor', {})
-
+details = entra_data.get('details', {})
 leen_items = []
 
 for user in users:
-    uid = user.get('id')
-    email = user.get('mail') or user.get('userPrincipalName', '')
-    domain = email.split('@')[-1] if email else ''
-    full_name = user.get('displayName', '')
-    name = user.get('givenName') or full_name.split()[0] if full_name else ''
-    is_admin = factor.get('isAdmin', False)
-    is_mfa_enrolled = factor.get('isMfaRegistered', False)
-    mfa_type = factor.get('defaultMfaMethod', '')
-    mfa_status = "ACTIVE" if is_mfa_enrolled else "NOT_SETUP"
-    mfa_provider = "MICROSOFT"
-    access_level = "ORG_ADMIN" if is_admin else "ORG_USER"
-    assigned_role = "USER"
-    last_updated = factor.get("lastUpdatedDateTime")
-
+    
     item = {
-        "id": uid,
-        "domain": domain,
-        "email_addr": email,
-        "full_name": full_name,
-        "name": name,
-        "vendor_id": uid,
-        "vendor_status": "ACTIVE",
+        "id": generate_uid(user.get('id')),
+        "domain": user.get('mail').split('@')[-1] if user.get('mail') else '',
+        "email_addr": user.get('mail') or user.get('userPrincipalName', ''),
+        "full_name": user.get('displayName', ''),
+        "name": user.get('displayName', ''),
+        "vendor_id": user.get('id'),
+        "vendor_status": "ACTIVE" if details.get('accountEnabled') else "INACTIVE",
         "vendor_created_at": None,
         "activated_at": None,
         "last_status_changed_at": None,
-        "last_login_at": None,
-        "last_updated_at": last_updated,
+        "last_login_at": details.get('lastSignInDateTime'),
+        "last_updated_at": None,
         "password_changed_days": None,
-        "is_mfa_enrolled": is_mfa_enrolled,
-        "mfa_type": mfa_type,
-        "mfa_status": mfa_status,
-        "mfa_provider": mfa_provider,
-        "is_admin": is_admin,
-        "access_level": access_level,
-        "assigned_role": assigned_role,
+        "mfa_type": factor.get('methodsRegistered'),
+        "mfa_status": "ACTIVE" if factor.get('isMfaRegistered') else "NOT_SETUP",
+        "mfa_provider": "MS Entra",
+        "is_admin": factor.get('isAdmin'),
+        "access_level": "",
+        "assigned_role": factor.get('userType'),
         "is_deleted": False
     }
 
@@ -65,5 +54,6 @@ leen_payload = {
 }
 
 # Save result
-with open('entra/leen_users_from_entra.json', 'w') as out:
+with open('part1/entra/entra_leen_data.json', 'w') as out:
     json.dump(leen_payload, out, indent=2)
+
