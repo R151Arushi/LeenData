@@ -80,6 +80,17 @@ For MS Entra:
 }
 
 ```
+| **Leen's Model** | **Okta**        | **MS Entra**           |
+|------------------|-----------------|------------------------|
+| `policyType`     | ✅              | ❌                      |
+| `policyName`     | ✅              | ✅                      |
+| `description`    | ✅              | ✅                      |
+| `policyId`       | ✅              | ✅                      |  
+| `status`         | ✅              | ✅                      |
+| `priority`       | ✅              | ❌                      |
+| `createdAt`      | ✅              | ✅                      |
+| `lastUpdated`    | ✅              | ✅                      |
+| `overrides.users`| ✅              | ✅                      |
 
 For a detailed deep dive in to process, refer to this google doc: [Google Doc](https://docs.google.com/document/d/1msJhx4C_EoU7_iprS4mwE67q3YukB8T95tBfBf_dz9Q/edit?usp=sharing)
 
