@@ -37,7 +37,7 @@ GET https://graph.microsoft.com/v1.0/users/{userId}?$select=accountEnabled,creat
 | `mfa_status`               | ✅       | ✅           |
 | `mfa_provider`             | ✅       | ✅           |
 | `is_admin`                 | ✅       | ✅           |
-| `access_level`             | ✅       | ✅           |
+| `access_level`             | ✅       | ❌           |
 | `assigned_role`            | ✅       | ✅           |
 
 
